@@ -6,7 +6,7 @@ function WorkoutList() {
   useEffect(() => {
     // Function to fetch workouts from the backend
     const fetchWorkouts = async () => {
-      const response = await fetch('http://localhost:8000/api/workouts/');
+      const response = await fetch('http://localhost:8000/');
       const data = await response.json();
       setWorkouts(data); // Update the state with the fetched workouts
     };

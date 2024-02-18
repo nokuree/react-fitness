@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom'; // Import useHistory
 
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const history = useHistory(); // Initialize useHistory
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -14,7 +16,7 @@ const Login = () => {
             });
             localStorage.setItem('token', response.data.token); // Store the token
             console.log('Logged in successfully!');
-            // Redirect user or update UI
+            history.push('/workouts'); // Redirect to workouts page
         } catch (error) {
             console.error('Failed to login:', error);
             // Handle error
@@ -23,20 +25,20 @@ const Login = () => {
 
     return (
         <form onSubmit={handleLogin}>
-            <input
-                type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                placeholder="Username"
-            />
-            <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Password"
-            />
-            <button type="submit">Login</button>
-        </form>
+        <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Username"
+        />
+        <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Password"
+        />
+        <button type="submit">Login</button>
+    </form>
     );
 };
 
