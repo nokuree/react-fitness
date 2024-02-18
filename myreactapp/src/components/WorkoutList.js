@@ -50,7 +50,7 @@ function WorkoutList() {
       </form>
       <ul>
         {workouts.map((workout, index) => (
-          <li key={index}>{workout.day} - {workout.workout} - <label> Completed: <input name="is_completed" type="checkbox" /> </label></li>
+          <li key={index}>{workout.day} - {workout.workout} - Completed: {workout.is_completed ? 'Yes' : 'No'}</li>
         ))}
       </ul>
     </div>
@@ -58,4 +58,3 @@ function WorkoutList() {
 }
 
 export default WorkoutList;
-
